@@ -17,7 +17,7 @@ services:
       target: development-build-stage
       dockerfile: Dockerfile
     ports:
-      - "4000:4000"
+      - "4000:3000"
     environment:
       MONGO_HOST: db
       MONGO_PORT: 27017
