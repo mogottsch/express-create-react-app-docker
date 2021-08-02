@@ -25,6 +25,7 @@ services:
       PORT: 3000
     volumes:
       - ./backend/src:/app/src
+      - ./backend/.env:/app/.env
     restart: "unless-stopped"
     networks:
       - gpt3-bingo
