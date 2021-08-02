@@ -21,16 +21,22 @@ class App {
   public port: string | number;
   public env: string;
 
-  constructor(routes: Routes[]) {
+  constructor() {
     this.app = express();
     this.port = process.env.PORT || 3000;
     this.env = process.env.NODE_ENV || 'development';
+  }
 
-    this.connectToDatabase();
+  public async init(routes: Routes[]) {
+    await this.connectToDatabase();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
     this.initializeSwagger();
     this.initializeErrorHandling();
+
+    this.app.emit('ready');
+
+    return this;
   }
 
   public listen() {
@@ -46,12 +52,14 @@ class App {
     return this.app;
   }
 
-  private connectToDatabase() {
+  private async connectToDatabase() {
     if (this.env !== 'production') {
       set('debug', true);
     }
 
-    connect(dbConnection.url, dbConnection.options);
+    logger.info(`Connecting to database: ${dbConnection.url}`);
+    await connect(dbConnection.url, dbConnection.options);
+    logger.info(`Database connected`);
   }
 
   private initializeMiddlewares() {
