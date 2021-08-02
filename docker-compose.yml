@@ -22,9 +22,9 @@ services:
       MONGO_HOST: db
       MONGO_PORT: 27017
       MONGO_DATABASE: mongoose
+      PORT: 3000
     volumes:
-      - ./backend:/app
-      # - /app/node_modules
+      - ./backend/src:/app/src
     restart: "unless-stopped"
     networks:
       - gpt3-bingo
@@ -45,8 +45,7 @@ services:
     ports:
       - "4001:3000"
     volumes:
-      - ./frontend:/app
-      # - /app/node_modules
+      - ./frontend/src:/app/src
     restart: "unless-stopped"
 
 networks:
