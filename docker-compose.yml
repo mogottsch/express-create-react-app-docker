@@ -38,6 +38,8 @@ services:
     image: mvertes/alpine-mongo
     networks:
       - gpt3-bingo
+    ports:
+      - "27017:27017"
 
   frontend:
     build:
