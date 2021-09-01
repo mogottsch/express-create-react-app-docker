@@ -25,12 +25,9 @@ services:
       MONGO_PORT: 27017
       MONGO_DATABASE: mongoose
       PORT: 3000
-      # TS_NODE_PROJECT: ./tsconfig.json
     volumes:
       - ./backend/src:/app/src
       - ./backend/.env:/app/.env
-      - ./backend/nodemon.json:/app/nodemon.json
-      - ./backend/tsconfig.json:/app/dist/tsconfig.json
     restart: "unless-stopped"
     networks:
       - gpt3-bingo

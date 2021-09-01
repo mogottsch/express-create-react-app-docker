@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
     "dev": "NODE_ENV=development nodemon",
-    "debug": "DEBUG=express:* nodemon --inspect-brk",
+    "debug": "DEBUG=express:* nodemon --config nodemon.debug.json",
     "build": "tsc && npx tsc-alias",
     "test": "jest --forceExit --detectOpenHandles",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
