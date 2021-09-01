@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Docker: Attach to Node",
+      "remoteRoot": "/app",
+      "port": 9229,
+      "localRoot": "${workspaceFolder}/backend/",
+      "protocol": "inspector",
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Test ts",
+      "remoteRoot": "${workspaceFolder}/tsdebug-test/",
+      "port": 9229,
+      "localRoot": "${workspaceFolder}/tsdebug-test/",
+      "protocol": "inspector"
+    }
+  ]
+}

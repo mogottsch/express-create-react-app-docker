@@ -16,16 +16,21 @@ services:
       context: ./backend
       target: development-build-stage
       dockerfile: Dockerfile
+    command: ["npm", "run", "debug"]
     ports:
-      - "4000:3000"
+      - 4000:3000
+      - 9229:9229
     environment:
       MONGO_HOST: db
       MONGO_PORT: 27017
       MONGO_DATABASE: mongoose
       PORT: 3000
+      # TS_NODE_PROJECT: ./tsconfig.json
     volumes:
       - ./backend/src:/app/src
       - ./backend/.env:/app/.env
+      - ./backend/nodemon.json:/app/nodemon.json
+      - ./backend/tsconfig.json:/app/dist/tsconfig.json
     restart: "unless-stopped"
     networks:
       - gpt3-bingo
